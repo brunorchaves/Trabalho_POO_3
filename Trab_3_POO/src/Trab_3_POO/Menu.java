@@ -109,6 +109,25 @@ public class Menu
 						System.out.println("Nao existem usuarios com esse login");
 					break;
 				case 4:
+					//Alterar
+					System.out.println("Digite o login do usuario que iremos alterar");
+					login = stringScan.nextLine();
+					userList	= mapUsuarios.get(login);
+					if(userList != null)
+					{
+						System.out.println("Digite o nome");
+						nome = stringScan.nextLine();
+						System.out.println("Digite o email");
+						email = stringScan.nextLine();
+						System.out.println("Digite a data de Nascimento");
+						dataNascimento = DataToString();
+						mapUsuarios.get(login).setNome(nome); 
+						mapUsuarios.get(login).setEmail(email);
+						mapUsuarios.get(login).setDataNascimento(dataNascimento);
+						System.out.println("Os dados do usuário "+login+" foram alterados \n");
+					}
+					else
+						System.out.println("Nao existem usuarios com esse login\n");
 					
 					break;
 				case 5:
