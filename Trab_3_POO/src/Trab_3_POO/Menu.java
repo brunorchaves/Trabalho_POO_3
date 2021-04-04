@@ -1,6 +1,7 @@
 package Trab_3_POO;
 import java.util.HashMap;
 import java.util.Scanner; 
+import java.util.Map;
 public class Menu 
 {
 	public Menu() 
@@ -46,26 +47,27 @@ public class Menu
 	public void menuUsuario()
 	{
 		int opcoes = 0;
-		Scanner in = new Scanner (System.in);
-		Scanner stringScan = new Scanner (System.in);
-		System.out.println("Escolha uma das opcoes abaixo: ");
-		System.out.println("1.Cadastrar");
-		System.out.println("2.Excluir");
-		System.out.println("3.Pesquisar");
-		System.out.println("4.Alterar");
-		System.out.println("5.Listar");
-		System.out.println("6.Sair");
-		opcoes = in.nextInt();
-
+		
+			
 		String login;
 		String nome;
 		String email ;
 		String dataNascimento;
-
+		Scanner in = new Scanner (System.in);
+		Scanner stringScan = new Scanner (System.in);
 		HashMap<String,Usuario> mapUsuarios = new HashMap<String,Usuario>();
 		Usuario userList = new Usuario(null,null,null,null) ;
 		do
-		{
+		{	
+			
+			System.out.println("Escolha uma das opcoes abaixo: ");
+			System.out.println("1.Cadastrar");
+			System.out.println("2.Excluir");
+			System.out.println("3.Pesquisar");
+			System.out.println("4.Alterar");
+			System.out.println("5.Listar");
+			System.out.println("6.Sair");
+			opcoes = in.nextInt();
 			switch(opcoes)
 			{
 				case 1:
@@ -89,7 +91,7 @@ public class Menu
 					{
 						mapUsuarios.remove(login);
 						System.out.println("Esse usuario foi removido");
-					}
+					}  
 					else
 						System.out.println("Nao existem usuarios com esse login");
 					break;
@@ -111,7 +113,14 @@ public class Menu
 					break;
 				case 5:
 					//listar
-					
+					String key;
+					 for (Map.Entry me : mapUsuarios.entrySet())
+					 {
+				          key = (String) me.getKey();
+				          userList	= mapUsuarios.get(key);
+				          System.out.println(userList.getLogin() +"\n"+userList.getNome()+"\n"+userList.getEmail()+"\n"+userList.getDataNascimento());
+				          System.out.println("\n");
+					 }
 					break;
 				case 6:
 					
