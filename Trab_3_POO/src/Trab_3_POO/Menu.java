@@ -1,4 +1,5 @@
 package Trab_3_POO;
+import java.util.HashMap;
 import java.util.Scanner; 
 public class Menu 
 {
@@ -54,15 +55,37 @@ public class Menu
 		System.out.println("4.Alterar");
 		System.out.println("5.Sair");
 		opcoes = in.nextInt();
+
+		String login;
+		String nome;
+		String email ;
+		String dataNascimento;
+
+		HashMap<String,Usuario> mapUsuarios = new HashMap<String,Usuario>();
+		Usuario userList = new Usuario(null,null,null,null) ;
 		switch(opcoes)
 		{
 			case 1:
-				
+				System.out.println("Digite o login");
+				login = stringScan.nextLine();
+				System.out.println("Digite o nome");
+				nome = stringScan.nextLine();
+				System.out.println("Digite o email");
+				email = stringScan.nextLine();
+				System.out.println("Digite a data de Nascimento");
+				dataNascimento = DataToString();
+				//HashMap
+				mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento));
+				/*
+				userList	= mapUsuarios.get(login);
+				System.out.println(userList.getLogin() +"\n"+userList.getNome()+"\n"+userList.getEmail()+"\n"+userList.getDataNascimento());
+				*/
 				break;
 			case 2:
 				
 				break;
 			case 3:
+				//Pesquisar
 				
 				break;
 			case 4:
@@ -84,7 +107,7 @@ public class Menu
 		System.out.println("1.Seguir:");
 		System.out.println("2.Cancelar Seguir");
 		System.out.println("3.Sair");
-		opcoes = in.nextInt();;
+		opcoes = in.nextInt();	
 		switch(opcoes)
 		{
 			case 1:
@@ -141,7 +164,7 @@ public class Menu
 		System.out.println("1.Ver seguidores:");
 		System.out.println("2.Seguidos:");
 		System.out.println("3.Sair");
-		opcoes = in.nextInt();;
+		opcoes = in.nextInt();
 		switch(opcoes)
 		{
 			case 1:
@@ -160,5 +183,19 @@ public class Menu
 				break;
 		}
 	}
-	
+	public String DataToString()
+	{
+		String dia,mes,ano;
+		String data,barra="/";
+		Scanner stringScan = new Scanner (System.in);
+       
+		System.out.println("Digite o dia");
+		dia = stringScan.nextLine();
+		System.out.println("Digite o mes");
+		mes = stringScan.nextLine();
+		System.out.println("Digite o Ano");
+		ano = stringScan.nextLine();
+		data =dia + barra + mes + barra +ano ;
+		return data;
+	}
 }
