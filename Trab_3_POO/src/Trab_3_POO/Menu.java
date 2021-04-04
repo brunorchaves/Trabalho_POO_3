@@ -1,9 +1,20 @@
 package Trab_3_POO;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner; 
 import java.util.Map;
 public class Menu 
 {
+	
+	public HashMap<String,Usuario> mapUsuarios = new HashMap<String,Usuario>();
+	public Usuario userList = new Usuario(null,null,null,null,null) ;
+	ArrayList<String> initSeguidores = new ArrayList(); 
+	
+	public String login;
+	public String nome;
+	public String email ;
+	public String dataNascimento;
+	
 	public Menu() 
 	{
 		
@@ -49,14 +60,10 @@ public class Menu
 		int opcoes = 0;
 		
 			
-		String login;
-		String nome;
-		String email ;
-		String dataNascimento;
+		
 		Scanner in = new Scanner (System.in);
 		Scanner stringScan = new Scanner (System.in);
-		HashMap<String,Usuario> mapUsuarios = new HashMap<String,Usuario>();
-		Usuario userList = new Usuario(null,null,null,null) ;
+		
 		do
 		{	
 			
@@ -80,7 +87,7 @@ public class Menu
 					System.out.println("Digite a data de Nascimento");
 					dataNascimento = DataToString();
 					//HashMap
-					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento));
+					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento,initSeguidores));
 					break;
 				case 2:
 					//Excluir
@@ -154,23 +161,62 @@ public class Menu
 		int opcoes = 0;
 		Scanner in = new Scanner (System.in);
 		Scanner stringScan = new Scanner (System.in);
+		
+		String loginSeguir,loginSeguido;
+
 		System.out.println("Escolha uma das opcoes abaixo: ");
 		System.out.println("1.Seguir:");
 		System.out.println("2.Cancelar Seguir");
-		System.out.println("3.Sair");
+		System.out.println("3.Mostrar seguidores");
+		System.out.println("4.Mostrar os que seguem");
+		System.out.println("5.Sair");
 		opcoes = in.nextInt();	
+		
+		ArrayList<String> seguidores = new ArrayList();
+		
 		switch(opcoes)
 		{
 			case 1:
+
+				System.out.println("Digite o login do usuario: ");
+				loginSeguir = stringScan.nextLine();
+				userList	= mapUsuarios.get(loginSeguir);
+				if(userList != null)
+				{
+					System.out.println("Digite o login do usuario a ser seguido: ");
+					loginSeguido = stringScan.nextLine();
+					userList	= mapUsuarios.get(loginSeguido);
+					if(userList != null)
+					{
+						mapUsuarios.get(login).addSeguidor(loginSeguido);
+						//adicionar na lista do que foi seguido
+					}
+					else
+						System.out.println("Nao existem usuarios com esse login\n");
+					
+				}
+				else
+				{
+					System.out.println("Nao existem usuarios com esse login\n");
+				}
 				
 				break;
 			case 2:
 				
 				break;
 			case 3:
-				
+				System.out.println("Digite o login do usuario: ");
+				loginSeguir = stringScan.nextLine();
+				seguidores = mapUsuarios.get(login).getSeguidores();
+			    for (int i=0; i<seguidores.size(); i++) 
+			    {
+			      System.out.printf("Posição %d- %s\n", i, seguidores.get(i));
+			    }
 				break;
 			case 4:
+				
+				break;
+			case 5:
 				
 				break;
 			default:

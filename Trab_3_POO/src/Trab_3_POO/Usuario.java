@@ -3,7 +3,7 @@ package Trab_3_POO;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Scanner; 
-
+import java.util.ArrayList;
 
 public class Usuario {
 	
@@ -11,19 +11,23 @@ public class Usuario {
 	private String nome;
 	private String email ;
 	private String dataNascimento;
-	private static HashMap<String, Integer> seguidores = new HashMap<String,Integer>() ;
+	private ArrayList<String> seguidores = new ArrayList();
+	private ArrayList<String> seguindo = new ArrayList();
+	//private static HashMap<String, Integer> seguindo = new HashMap<String,Integer>() ;
 	//Lista de seguidores
 	//Lista de Publica
-	public Usuario(String login, String nome, String email, String dataNascimento) {
+	public Usuario(String login, String nome, String email, String dataNascimento, ArrayList<String> seguidores) {
 		super();
 		this.login = login;
 		this.nome = nome;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
+		this.seguidores = seguidores;
 	}
 	public String getLogin() {
 		return login;
 	}
+	
 	public void setLogin(String login) {
 		this.login = login;
 	}
@@ -46,12 +50,16 @@ public class Usuario {
 
 		this.dataNascimento = dataNascimento;
 	}
-	public static HashMap<String, Integer> getSeguidores() {
+	public ArrayList<String> getSeguidores() {
 		return seguidores;
 	}
-	public static void setSeguidores(HashMap<String, Integer> seguidores) {
-		Usuario.seguidores = seguidores;
+	public void setSeguidores(ArrayList<String> seguidores) {
+		this.seguidores = seguidores;
 	}
+	public void addSeguidor(String seguidor) {
+		this.seguidores.add(seguidor);
+	}
+	
 	
 	
 	
