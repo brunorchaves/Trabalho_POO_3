@@ -53,7 +53,8 @@ public class Menu
 		System.out.println("2.Excluir");
 		System.out.println("3.Pesquisar");
 		System.out.println("4.Alterar");
-		System.out.println("5.Sair");
+		System.out.println("5.Listar");
+		System.out.println("6.Sair");
 		opcoes = in.nextInt();
 
 		String login;
@@ -63,49 +64,62 @@ public class Menu
 
 		HashMap<String,Usuario> mapUsuarios = new HashMap<String,Usuario>();
 		Usuario userList = new Usuario(null,null,null,null) ;
-		switch(opcoes)
+		do
 		{
-			case 1:
-				System.out.println("Digite o login");
-				login = stringScan.nextLine();
-				System.out.println("Digite o nome");
-				nome = stringScan.nextLine();
-				System.out.println("Digite o email");
-				email = stringScan.nextLine();
-				System.out.println("Digite a data de Nascimento");
-				dataNascimento = DataToString();
-				//HashMap
-				mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento));
-				/*
-				userList	= mapUsuarios.get(login);
-				System.out.println(userList.getLogin() +"\n"+userList.getNome()+"\n"+userList.getEmail()+"\n"+userList.getDataNascimento());
-				*/
-				break;
-			case 2:
-				//Excluir
-				break;
-			case 3:
-				//Pesquisar
-				System.out.println("Digite o login do usuario que quer pesquisar");
-				login = stringScan.nextLine();
-				userList	= mapUsuarios.get(login);
-				if(userList != null)
-				{
-					System.out.println("Esses são os dados do usuario de login" + login+ "\n");
-					System.out.println(userList.getLogin() +"\n"+userList.getNome()+"\n"+userList.getEmail()+"\n"+userList.getDataNascimento());
-				}
-				else
-					System.out.println("Não existem usuarios com esse login");
-				break;
-			case 4:
-				
-				break;
-			case 5:
-				
-				break;
-			default:
-				break;
-		}
+			switch(opcoes)
+			{
+				case 1:
+					System.out.println("Digite o login");
+					login = stringScan.nextLine();
+					System.out.println("Digite o nome");
+					nome = stringScan.nextLine();
+					System.out.println("Digite o email");
+					email = stringScan.nextLine();
+					System.out.println("Digite a data de Nascimento");
+					dataNascimento = DataToString();
+					//HashMap
+					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento));
+					break;
+				case 2:
+					//Excluir
+					System.out.println("Digite o login do usuario que quer excluir");
+					login = stringScan.nextLine();
+					userList	= mapUsuarios.get(login);
+					if(userList != null)
+					{
+						mapUsuarios.remove(login);
+						System.out.println("Esse usuario foi removido");
+					}
+					else
+						System.out.println("Nao existem usuarios com esse login");
+					break;
+				case 3:
+					//Pesquisar
+					System.out.println("Digite o login do usuario que quer pesquisar");
+					login = stringScan.nextLine();
+					userList	= mapUsuarios.get(login);
+					if(userList != null)
+					{
+						System.out.println("Esses sao os dados do usuario de login" + login+ "\n");
+						System.out.println(userList.getLogin() +"\n"+userList.getNome()+"\n"+userList.getEmail()+"\n"+userList.getDataNascimento());
+					}
+					else
+						System.out.println("Nao existem usuarios com esse login");
+					break;
+				case 4:
+					
+					break;
+				case 5:
+					//listar
+					
+					break;
+				case 6:
+					
+					break;
+				default:
+					break;
+			}
+		}while(opcoes !=6);
 	}
 	public void menuSeguidores()
 	{
