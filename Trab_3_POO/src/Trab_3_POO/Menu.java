@@ -82,11 +82,20 @@ public class Menu
 				*/
 				break;
 			case 2:
-				
+				//Excluir
 				break;
 			case 3:
 				//Pesquisar
-				
+				System.out.println("Digite o login do usuario que quer pesquisar");
+				login = stringScan.nextLine();
+				userList	= mapUsuarios.get(login);
+				if(userList != null)
+				{
+					System.out.println("Esses são os dados do usuario de login" + login+ "\n");
+					System.out.println(userList.getLogin() +"\n"+userList.getNome()+"\n"+userList.getEmail()+"\n"+userList.getDataNascimento());
+				}
+				else
+					System.out.println("Não existem usuarios com esse login");
 				break;
 			case 4:
 				
