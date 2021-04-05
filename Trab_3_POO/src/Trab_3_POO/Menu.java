@@ -7,8 +7,9 @@ public class Menu
 {
 	
 	public HashMap<String,Usuario> mapUsuarios = new HashMap<String,Usuario>();
-	public Usuario userList = new Usuario(null,null,null,null,null) ;
+	public Usuario userList = new Usuario(null,null,null,null,null,null) ;
 	ArrayList<String> initSeguidores = new ArrayList(); 
+	ArrayList<String> initSeguindo = new ArrayList(); 
 	
 	public String login;
 	public String nome;
@@ -87,7 +88,7 @@ public class Menu
 					System.out.println("Digite a data de Nascimento");
 					dataNascimento = DataToString();
 					//HashMap
-					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento,initSeguidores));
+					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento,initSeguidores,initSeguindo));
 					break;
 				case 2:
 					//Excluir
@@ -173,23 +174,24 @@ public class Menu
 		opcoes = in.nextInt();	
 		
 		ArrayList<String> seguidores = new ArrayList();
+		ArrayList<String> seguindo = new ArrayList();
 		
 		switch(opcoes)
 		{
 			case 1:
 
 				System.out.println("Digite o login do usuario: ");
-				loginSeguir = stringScan.nextLine();
+				loginSeguir = stringScan.nextLine();//usuario 1
 				userList	= mapUsuarios.get(loginSeguir);
 				if(userList != null)
 				{
 					System.out.println("Digite o login do usuario a ser seguido: ");
-					loginSeguido = stringScan.nextLine();
+					loginSeguido = stringScan.nextLine();//usuario 2
 					userList	= mapUsuarios.get(loginSeguido);
 					if(userList != null)
 					{
-						mapUsuarios.get(login).addSeguidor(loginSeguido);
-						//adicionar na lista do que foi seguido
+						mapUsuarios.get(loginSeguir).addSeguindo(loginSeguido);//Adiciona na lista de seguindo do usuario 1
+						mapUsuarios.get(loginSeguido).addSeguidor(loginSeguir);//Adiciona na lista de seguidores do usuario 2
 					}
 					else
 						System.out.println("Nao existem usuarios com esse login\n");
@@ -207,13 +209,22 @@ public class Menu
 			case 3:
 				System.out.println("Digite o login do usuario: ");
 				loginSeguir = stringScan.nextLine();
-				seguidores = mapUsuarios.get(login).getSeguidores();
+				seguidores = mapUsuarios.get(loginSeguir).getSeguidores();
+		
 			    for (int i=0; i<seguidores.size(); i++) 
 			    {
 			      System.out.printf("Posição %d- %s\n", i, seguidores.get(i));
 			    }
 				break;
 			case 4:
+				System.out.println("Digite o login do usuario: ");
+				loginSeguido = stringScan.nextLine();
+				seguindo = mapUsuarios.get(loginSeguido).getSeguindo();
+				
+			    for (int i=0; i<seguindo.size(); i++) 
+			    {
+			      System.out.printf("Posição %d- %s\n", i, seguindo.get(i));
+			    }
 				
 				break;
 			case 5:

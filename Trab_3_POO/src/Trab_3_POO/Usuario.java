@@ -16,18 +16,22 @@ public class Usuario {
 	//private static HashMap<String, Integer> seguindo = new HashMap<String,Integer>() ;
 	//Lista de seguidores
 	//Lista de Publica
-	public Usuario(String login, String nome, String email, String dataNascimento, ArrayList<String> seguidores) {
+	
+	public String getLogin() {
+		return login;
+	}
+	
+	public Usuario(String login, String nome, String email, String dataNascimento, ArrayList<String> seguidores,
+			ArrayList<String> seguindo) {
 		super();
 		this.login = login;
 		this.nome = nome;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
 		this.seguidores = seguidores;
+		this.seguindo = seguindo;
 	}
-	public String getLogin() {
-		return login;
-	}
-	
+
 	public void setLogin(String login) {
 		this.login = login;
 	}
@@ -58,6 +62,15 @@ public class Usuario {
 	}
 	public void addSeguidor(String seguidor) {
 		this.seguidores.add(seguidor);
+	}
+	public ArrayList<String> getSeguindo() {
+		return seguindo;
+	}
+	public void setSeguindo(ArrayList<String> seguindo) {
+		this.seguindo = seguindo;
+	}
+	public void addSeguindo(String seguindo) {
+		this.seguidores.add(seguindo);
 	}
 	
 	
