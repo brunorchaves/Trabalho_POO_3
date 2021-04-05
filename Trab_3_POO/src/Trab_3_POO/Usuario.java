@@ -70,7 +70,7 @@ public class Usuario {
 		this.seguindo = seguindo;
 	}
 	public void addSeguindo(String seguindo) {
-		this.seguidores.add(seguindo);
+		this.seguindo.add(seguindo);
 	}
 	
 	
