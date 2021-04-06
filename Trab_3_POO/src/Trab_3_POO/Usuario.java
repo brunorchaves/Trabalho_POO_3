@@ -11,26 +11,26 @@ public class Usuario {
 	private String nome;
 	private String email ;
 	private String dataNascimento;
-	private ArrayList<String> seguidores = new ArrayList();
-	private ArrayList<String> seguindo = new ArrayList();
+	private ArrayList<String> seguidores = new ArrayList<String>();
 	//private static HashMap<String, Integer> seguindo = new HashMap<String,Integer>() ;
 	//Lista de seguidores
 	//Lista de Publica
 	
-	public String getLogin() {
-		return login;
-	}
-	
-	public Usuario(String login, String nome, String email, String dataNascimento, ArrayList<String> seguidores,
-			ArrayList<String> seguindo) {
+
+	public Usuario(String login, String nome, String email, String dataNascimento, ArrayList<String> seguidores) 
+	{
 		super();
 		this.login = login;
 		this.nome = nome;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
 		this.seguidores = seguidores;
-		this.seguindo = seguindo;
+		
 	}
+	public String getLogin() {
+		return login;
+	}
+	
 
 	public void setLogin(String login) {
 		this.login = login;
@@ -54,26 +54,35 @@ public class Usuario {
 
 		this.dataNascimento = dataNascimento;
 	}
+	//Seguidores
 	public ArrayList<String> getSeguidores() {
 		return seguidores;
 	}
 	public void setSeguidores(ArrayList<String> seguidores) {
 		this.seguidores = seguidores;
 	}
-	public void addSeguidor(String seguidor) {
-		this.seguidores.add(seguidor);
-	}
-	public ArrayList<String> getSeguindo() {
-		return seguindo;
-	}
-	public void setSeguindo(ArrayList<String> seguindo) {
-		this.seguindo = seguindo;
-	}
-	public void addSeguindo(String seguindo) {
-		this.seguindo.add(seguindo);
+	
+	public void addSeguidores(ArrayList<String> seguidores,String seguidor) {
+		boolean contem=false;
+		
+		for(int i = 0; i< seguidores.size();i++)
+		{
+			if(seguidores.get(i) == seguidor)
+			{
+				System.out.println("Esse usuario ja esta aqui");
+				contem = true;
+			}
+			
+		}
+		if(contem == false)
+		{
+			seguidores.add(seguidor);
+		}
+		
+		
 	}
 	
 	
 	
-	
+
 }
