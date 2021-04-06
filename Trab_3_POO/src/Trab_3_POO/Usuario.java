@@ -12,26 +12,25 @@ public class Usuario {
 	private String email ;
 	private String dataNascimento;
 	private ArrayList<String> seguidores = new ArrayList<String>();
+	private ArrayList<String> seguidos = new ArrayList<String>();
 	//private static HashMap<String, Integer> seguindo = new HashMap<String,Integer>() ;
 	//Lista de seguidores
 	//Lista de Publica
-	
 
-	public Usuario(String login, String nome, String email, String dataNascimento, ArrayList<String> seguidores) 
-	{
+	public Usuario(String login, String nome, String email, String dataNascimento, ArrayList<String> seguidores,
+			ArrayList<String> seguidos) {
 		super();
 		this.login = login;
 		this.nome = nome;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
 		this.seguidores = seguidores;
-		
+		this.seguidos = seguidos;
 	}
+
 	public String getLogin() {
 		return login;
 	}
-	
-
 	public void setLogin(String login) {
 		this.login = login;
 	}
@@ -62,23 +61,36 @@ public class Usuario {
 		this.seguidores = seguidores;
 	}
 	
-	public void addSeguidores(ArrayList<String> seguidores,String seguidor) 
+	public void addSeguidores(String seguidor) 
 	{
 		
-		if(seguidores.contains(seguidor))
+		if(this.seguidores.contains(seguidor))
 		{
 			System.out.println("Esse usuario ja esta aqui");
 		}
 			
 		else
 		{
-			seguidores.add(seguidor);
+			this.seguidores.add(seguidor);
 		}
 		
 		
 	}
+
+	public ArrayList<String> getSeguidos() {
+		return seguidos;
+	}
+
+	public void setSeguidos(ArrayList<String> seguidos) {
+		this.seguidos = seguidos;
+	}
 	
+	public void addSeguidos(String seguido) 
+	{	
 	
+		this.seguidos.add(seguido);	
+		
+	}
 	
 
 }

@@ -7,7 +7,7 @@ public class Menu
 {
 	
 	public HashMap<String,Usuario> mapUsuarios = new HashMap<String,Usuario>();
-	public Usuario userList = new Usuario(null,null,null,null,null) ;
+	public Usuario userList = new Usuario(null,null,null,null,null,null) ;
 	
 	
 	public String login;
@@ -89,7 +89,7 @@ public class Menu
 					//HashMap
 					ArrayList<String> initSeguidores = new ArrayList<String>(); 
 					ArrayList<String> initSeguindo = new ArrayList<String>(); 
-					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento,initSeguidores));
+					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento,initSeguidores,initSeguindo));
 					break;
 				case 2:
 					//Excluir
@@ -170,7 +170,7 @@ public class Menu
 		System.out.println("1.Seguir:");
 		System.out.println("2.Cancelar Seguir");
 		System.out.println("3.Mostrar seguidores");
-		System.out.println("4.Mostrar os que seguem");
+		System.out.println("4.Mostrar os seguidos");
 		System.out.println("5.Sair");
 		opcoes = in.nextInt();	
 		
@@ -189,11 +189,8 @@ public class Menu
 					
 					if(mapUsuarios.get(user2) != null)
 					{
-						mapUsuarios.get(user2).addSeguidores(mapUsuarios.get(user2).getSeguidores(),user1);
-						System.out.println("Login: "+ mapUsuarios.get(user2).getLogin());
-						System.out.println(mapUsuarios.get(user2).getSeguidores());
-						System.out.println("Login: "+mapUsuarios.get(user1).getLogin());
-						System.out.println(mapUsuarios.get(user1).getSeguidores());
+						mapUsuarios.get(user2).addSeguidores(user1);
+						mapUsuarios.get(user1).addSeguidos(user2);
 					}
 					else
 						System.out.println("Nao existem usuarios com esse login\n");
@@ -228,7 +225,22 @@ public class Menu
 				
 				break;
 			case 4:
+				System.out.println("Digite o login do usuario de quem que vai ver os seguidos : ");
+				user1 = stringScan.nextLine();//usuario 1
 				
+				if(mapUsuarios.get(user1) != null)
+				{
+					for(int i = 0; i< mapUsuarios.get(user1).getSeguidos().size();i++)
+					{
+						System.out.printf("%d =",i);
+						System.out.println(mapUsuarios.get(user1).getSeguidos().get(i));
+						System.out.println("");
+					}
+				}
+				else
+				{
+					System.out.println("Nao existem usuarios com esse login\n");
+				}
 				
 				break;
 			case 5:
