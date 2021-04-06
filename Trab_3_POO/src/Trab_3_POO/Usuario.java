@@ -62,19 +62,15 @@ public class Usuario {
 		this.seguidores = seguidores;
 	}
 	
-	public void addSeguidores(ArrayList<String> seguidores,String seguidor) {
-		boolean contem=false;
+	public void addSeguidores(ArrayList<String> seguidores,String seguidor) 
+	{
 		
-		for(int i = 0; i< seguidores.size();i++)
+		if(seguidores.contains(seguidor))
 		{
-			if(seguidores.get(i) == seguidor)
-			{
-				System.out.println("Esse usuario ja esta aqui");
-				contem = true;
-			}
-			
+			System.out.println("Esse usuario ja esta aqui");
 		}
-		if(contem == false)
+			
+		else
 		{
 			seguidores.add(seguidor);
 		}
