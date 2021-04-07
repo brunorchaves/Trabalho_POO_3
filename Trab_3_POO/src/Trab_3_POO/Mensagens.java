@@ -20,10 +20,10 @@ public class Mensagens
 	}
 	
 	
-	public void addComentario(String comentario)
+	public void addComentario(String comentario,int index)
 	{
 		int tamanho = this.publiComent.size();
-		this.publiComent.get(tamanho).add(comentario);
+		this.publiComent.get(index).add(comentario);
 	}
 	
 }

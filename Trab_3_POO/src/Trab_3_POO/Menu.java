@@ -304,13 +304,14 @@ public class Menu
 		switch(opcoes)
 		{
 			case 1:
-				/****/
+		
 				System.out.println("Digite o seu login: ");
 				user1 = stringScan.nextLine();//usuario 1
 				if( mapUsuarios.get(user1) != null)
 				{
+					mensagem = user1+ " ";
 					System.out.println("Digite sua publicacao: ");
-					mensagem = stringScan.nextLine();
+					mensagem += stringScan.nextLine();
 					mensagem += userList.getHourNow();
 					ArrayList<String> listaPublicacoes = new ArrayList<String>();//Lista de publicacoes nova
 					listaPublicacoes.add(mensagem);
@@ -326,9 +327,41 @@ public class Menu
 				}
 				break;
 			case 2:
-				System.out.println("Digite o login do usuario de quem vai ver as mensagens: ");
+				System.out.println("Digite o login do usuario de quem vai comentar as mensagens: ");
 				user1 = stringScan.nextLine();
-				
+				if( mapUsuarios.get(user1) != null)
+				{
+					System.out.println("Essas sao as publicacoes do usuario "+user1);
+					for(int i = 0; i< mapMensagens.get(user1).getPubliComent().size();i++)
+					{
+
+						System.out.println("----------------------------------------- ");
+						System.out.printf("Publicacao %d do %s :",i,user1);
+						System.out.println(mapMensagens.get(user1).getPubliComent().get(i));
+						System.out.println("");
+						System.out.println("----------------------------------------- ");
+					}
+					System.out.println("Escolha a publicacao que vai comentar: ");
+					index = in.nextInt();
+					System.out.println("Digite o login do usuario vai comentar as publicacao: ");
+					user2 = stringScan.nextLine();
+					if( mapUsuarios.get(user2) != null)
+					{
+						mensagem = user2 + " ";
+						System.out.println("Digite seu comentario: ");
+						mensagem += stringScan.nextLine();
+						mensagem += userList.getHourNow();
+						mapMensagens.get(user1).addComentario(mensagem,index);
+					}
+					else
+					{
+						System.out.println("Nao existem usuarios com esse login\n");
+					}
+				}
+				else
+				{
+					System.out.println("Nao existem usuarios com esse login\n");
+				}
 				break;
 			case 3:
 				System.out.println("Digite o login da pessoa que deseja ver as mensagens: ");
@@ -341,7 +374,7 @@ public class Menu
 					for(int i = 0; i< verListas.size();i++)
 					{
 
-						System.out.println("---------------CEFET-MENSAGEM------------- ");
+						System.out.println("----------------------------------------- ");
 						System.out.printf("Publicacao %d do %s :",i,user1);
 						System.out.println(verListas.get(i));
 						System.out.println("");
@@ -385,6 +418,23 @@ public class Menu
 			default:
 				break;
 		}
+	}
+	public void progresso()
+	{
+		int opcoes = 0;
+		Scanner in = new Scanner (System.in);
+		Scanner stringScan = new Scanner (System.in);
+		System.out.println("----------------------------------------- ");
+		System.out.println("Cadastros: ok! ");
+		System.out.println("Seguidores: ok!");
+		System.out.println("Mensagens e comentarios: 50%");
+		System.out.println("Rede: 50%");
+		System.out.println("Restricoes:");
+		System.out.println("-Usuario só pode comentar mensagem de outro : nao feito");
+		System.out.println("-Maximo de 140 caracteres : nao feito");
+		System.out.println("Apagar comentarios e remover seguidores quando usuario excluido : nao feito");
+		System.out.println("----------------------------------------- ");
+		
 	}
 	public String DataToString()
 	{
