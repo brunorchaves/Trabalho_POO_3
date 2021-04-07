@@ -7,7 +7,7 @@ public class Menu
 {
 	
 	public HashMap<String,Usuario> mapUsuarios = new HashMap<String,Usuario>();
-	public Usuario userList = new Usuario(null,null,null,null,null,null) ;
+	public Usuario userList = new Usuario(null,null,null,null,null,null,null) ;
 	
 	
 	public String login;
@@ -89,7 +89,8 @@ public class Menu
 					//HashMap
 					ArrayList<String> initSeguidores = new ArrayList<String>(); 
 					ArrayList<String> initSeguindo = new ArrayList<String>(); 
-					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento,initSeguidores,initSeguindo));
+					ArrayList<String> initPubli = new ArrayList<String>(); 
+					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento,initSeguidores,initSeguindo,initPubli));
 					break;
 				case 2:
 					//Excluir
@@ -301,14 +302,14 @@ public class Menu
 		Scanner in = new Scanner (System.in);
 		Scanner stringScan = new Scanner (System.in);
 		System.out.println("Escolha uma das opcoes abaixo: ");
-		System.out.println("1.Ver seguidores:");
+		System.out.println("1.Ver Horas:");
 		System.out.println("2.Seguidos:");
 		System.out.println("3.Sair");
 		opcoes = in.nextInt();
 		switch(opcoes)
 		{
 			case 1:
-				
+				userList.getHourNow();
 				break;
 			case 2:
 				

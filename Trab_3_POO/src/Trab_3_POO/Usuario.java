@@ -1,6 +1,8 @@
 package Trab_3_POO;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Scanner; 
 import java.util.ArrayList;
@@ -13,12 +15,13 @@ public class Usuario {
 	private String dataNascimento;
 	private ArrayList<String> seguidores = new ArrayList<String>();
 	private ArrayList<String> seguidos = new ArrayList<String>();
+	private ArrayList<String> publicacoes = new ArrayList();
 	//private static HashMap<String, Integer> seguindo = new HashMap<String,Integer>() ;
 	//Lista de seguidores
 	//Lista de Publica
 
 	public Usuario(String login, String nome, String email, String dataNascimento, ArrayList<String> seguidores,
-			ArrayList<String> seguidos) {
+			ArrayList<String> seguidos, ArrayList<String> publicacoes) {
 		super();
 		this.login = login;
 		this.nome = nome;
@@ -26,6 +29,7 @@ public class Usuario {
 		this.dataNascimento = dataNascimento;
 		this.seguidores = seguidores;
 		this.seguidos = seguidos;
+		this.publicacoes = publicacoes;
 	}
 
 	public String getLogin() {
@@ -89,6 +93,29 @@ public class Usuario {
 	{	
 	
 		this.seguidos.add(seguido);	
+		
+	}
+
+	public ArrayList<String> getPublicacoes() {
+		return publicacoes;
+	}
+
+	public void setPublicacoes(ArrayList<String> publicacoes) {
+		this.publicacoes = publicacoes;
+	}
+	public void getHourNow()
+	{
+		Date date = new Date();   // given date
+		Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
+		calendar.setTime(date);   // assigns calendar to given date 
+		calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
+		calendar.get(Calendar.DAY_OF_MONTH);        // gets hour in 12h format
+		calendar.get(Calendar.MONTH);       // gets month number, NOTE this is zero based!
+		System.out.print("Hora atual: "+calendar.get(Calendar.HOUR_OF_DAY));
+		System.out.println(":"+calendar.get(Calendar.MINUTE));
+		System.out.print("Data: "+calendar.get(Calendar.DAY_OF_MONTH));
+		System.out.print("/"+calendar.get(Calendar.MONTH));
+		System.out.println("/"+calendar.get(Calendar.YEAR));
 		
 	}
 	
