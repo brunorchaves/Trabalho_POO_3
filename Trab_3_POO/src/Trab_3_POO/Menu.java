@@ -175,7 +175,7 @@ public class Menu
 		opcoes = in.nextInt();	
 		
 		String user1=" ",user2="";
-
+		int index = 0;
 		switch(opcoes)
 		{
 			case 1:
@@ -203,6 +203,22 @@ public class Menu
 				
 				break;
 			case 2:
+				System.out.println("Digite o login do usuario de quem que cancelar um seguimento : ");
+				user1 = stringScan.nextLine();//usuario 1
+				
+				if(mapUsuarios.get(user1) != null)
+				{
+					for(int i = 0; i< mapUsuarios.get(user1).getSeguidores().size();i++)
+					{
+						System.out.printf("%d =",i);
+						System.out.println(mapUsuarios.get(user1).getSeguidores().get(i));
+						System.out.println("");
+					}
+				}
+				System.out.println("Digite a posicao do usuario que vai remover : ");
+				index = in.nextInt();
+				mapUsuarios.get(user1).getSeguidores().remove(index);
+				System.out.println("O usuario escolhido foi removido ");
 				
 				break;
 			case 3:
