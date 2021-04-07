@@ -90,19 +90,23 @@ public class Usuario {
 		
 	}
 
-	public void getHourNow()
+	public String getHourNow()
 	{
+		String dataHora;
+		String doisPontos = ":";
+		String espaco = " ";
+		String barra = "/";
+		int mes =hashCode();
 		Date date = new Date();   // given date
 		Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
 		calendar.setTime(date);   // assigns calendar to given date 
 		calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
-		calendar.get(Calendar.DAY_OF_MONTH);        // gets hour in 12h format
-		calendar.get(Calendar.MONTH);       // gets month number, NOTE this is zero based!
-		System.out.print("Hora atual: "+calendar.get(Calendar.HOUR_OF_DAY));
-		System.out.println(":"+calendar.get(Calendar.MINUTE));
-		System.out.print("Data: "+calendar.get(Calendar.DAY_OF_MONTH));
-		System.out.print("/"+calendar.get(Calendar.MONTH));
-		System.out.println("/"+calendar.get(Calendar.YEAR));
+		mes = calendar.get(Calendar.MONTH) + 1;
+		
+		dataHora =espaco +String.valueOf(calendar.get(Calendar.HOUR_OF_DAY))+doisPontos+ String.valueOf(calendar.get(Calendar.MINUTE))
+		+ espaco+String.valueOf(calendar.get(Calendar.DAY_OF_MONTH))+barra+String.valueOf(mes) + barra +String.valueOf(calendar.get(Calendar.YEAR));
+		
+		return dataHora;
 		
 	}
 	

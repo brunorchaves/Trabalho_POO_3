@@ -19,14 +19,11 @@ public class Mensagens
 		this.publiComent = publiComent;
 	}
 	
-	public int contaPublicacoes()
+	
+	public void addComentario(String comentario)
 	{
-		return 0;
-		
-	}
-	public void addMensagemInit(String mensagemInit,int index)
-	{
-		this.publiComent.get(index).add(mensagemInit);
+		int tamanho = this.publiComent.size();
+		this.publiComent.get(tamanho).add(comentario);
 	}
 	
 }

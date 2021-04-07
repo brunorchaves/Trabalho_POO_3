@@ -282,6 +282,8 @@ public class Menu
 		
 		String user1=" ",user2="";
 		int index = 0;
+		String mensagem;
+		
 		
 		switch(opcoes)
 		{
@@ -291,7 +293,14 @@ public class Menu
 				user1 = stringScan.nextLine();//usuario 1
 				if( mapUsuarios.get(user1) != null)
 				{
-					mapMensagens.get(user1).getPubliComent().add(null);
+					System.out.println("Digite a mensagem inicial da sua publicacao: ");
+					mensagem = stringScan.nextLine();
+					mensagem += userList.getHourNow();
+					ArrayList<String> listaPublicacoes = new ArrayList<String>();//Lista de publicacoes nova
+					listaPublicacoes.add(mensagem);
+					
+					mapMensagens.get(user1).getPubliComent().add(listaPublicacoes);
+					System.out.println("Sua publicacao foi craida com sucesso! \n ");
 				}
 				else
 				{
@@ -302,7 +311,21 @@ public class Menu
 				
 				break;
 			case 3:
+				System.out.println("Digite o login do usuario de quem vai ver as mensagens: ");
+				user1 = stringScan.nextLine();//usuario 1
+				ArrayList<ArrayList<String>> verListas = new ArrayList<ArrayList<String>>();
+				verListas =  mapMensagens.get(user1).getPubliComent();
 				
+				if( mapUsuarios.get(user1) != null)
+				{
+					for(int i = 0; i< verListas.size();i++)
+					{
+						System.out.printf("Publicacao %d :",i);
+						System.out.println(verListas.get(i));
+						System.out.println("");
+						
+					}
+				}
 				break;
 			case 4:
 				
