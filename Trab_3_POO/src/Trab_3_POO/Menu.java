@@ -7,8 +7,8 @@ public class Menu
 {
 	
 	public HashMap<String,Usuario> mapUsuarios = new HashMap<String,Usuario>();
-	public Usuario userList = new Usuario(null,null,null,null,null,null,null) ;
-	
+	public HashMap<String,Mensagens> mapMensagens = new HashMap<String,Mensagens>();
+	public Usuario userList = new Usuario(null,null,null,null,null,null) ;
 	
 	public String login;
 	public String nome;
@@ -89,8 +89,9 @@ public class Menu
 					//HashMap
 					ArrayList<String> initSeguidores = new ArrayList<String>(); 
 					ArrayList<String> initSeguindo = new ArrayList<String>(); 
-					ArrayList<String> initPubli = new ArrayList<String>(); 
-					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento,initSeguidores,initSeguindo,initPubli));
+					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento,initSeguidores,initSeguindo));
+					ArrayList<ArrayList<String>> initMensagem = new ArrayList<ArrayList<String>>();
+					mapMensagens.put(login,new Mensagens(initMensagem));//Cria lista de publicações associada a cada usuario
 					break;
 				case 2:
 					//Excluir
@@ -278,10 +279,24 @@ public class Menu
 		System.out.println("3.Ver mensagens");
 		System.out.println("4.Sair");
 		opcoes = in.nextInt();
+		
+		String user1=" ",user2="";
+		int index = 0;
+		
 		switch(opcoes)
 		{
 			case 1:
-				
+				/****/
+				System.out.println("Digite o login do usuario que vai escrever a mensagem: ");
+				user1 = stringScan.nextLine();//usuario 1
+				if( mapUsuarios.get(user1) != null)
+				{
+					mapMensagens.get(user1).getPubliComent().add(null);
+				}
+				else
+				{
+					System.out.println("Nao existem usuarios com esse login\n");
+				}
 				break;
 			case 2:
 				
@@ -302,14 +317,14 @@ public class Menu
 		Scanner in = new Scanner (System.in);
 		Scanner stringScan = new Scanner (System.in);
 		System.out.println("Escolha uma das opcoes abaixo: ");
-		System.out.println("1.Ver Horas:");
+		System.out.println("1.Ver Seguidores:");
 		System.out.println("2.Seguidos:");
 		System.out.println("3.Sair");
 		opcoes = in.nextInt();
 		switch(opcoes)
 		{
 			case 1:
-				userList.getHourNow();
+				
 				break;
 			case 2:
 				

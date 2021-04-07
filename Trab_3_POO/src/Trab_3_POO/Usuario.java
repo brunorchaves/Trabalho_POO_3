@@ -15,13 +15,9 @@ public class Usuario {
 	private String dataNascimento;
 	private ArrayList<String> seguidores = new ArrayList<String>();
 	private ArrayList<String> seguidos = new ArrayList<String>();
-	private ArrayList<String> publicacoes = new ArrayList();
-	//private static HashMap<String, Integer> seguindo = new HashMap<String,Integer>() ;
-	//Lista de seguidores
-	//Lista de Publica
 
 	public Usuario(String login, String nome, String email, String dataNascimento, ArrayList<String> seguidores,
-			ArrayList<String> seguidos, ArrayList<String> publicacoes) {
+			ArrayList<String> seguidos) {
 		super();
 		this.login = login;
 		this.nome = nome;
@@ -29,9 +25,7 @@ public class Usuario {
 		this.dataNascimento = dataNascimento;
 		this.seguidores = seguidores;
 		this.seguidos = seguidos;
-		this.publicacoes = publicacoes;
 	}
-
 	public String getLogin() {
 		return login;
 	}
@@ -96,13 +90,6 @@ public class Usuario {
 		
 	}
 
-	public ArrayList<String> getPublicacoes() {
-		return publicacoes;
-	}
-
-	public void setPublicacoes(ArrayList<String> publicacoes) {
-		this.publicacoes = publicacoes;
-	}
 	public void getHourNow()
 	{
 		Date date = new Date();   // given date
