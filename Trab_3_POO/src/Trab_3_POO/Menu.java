@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner; 
 import java.util.Map;
+
+
 public class Menu 
 {
 	
@@ -26,13 +28,16 @@ public class Menu
 		Scanner stringScan = new Scanner (System.in);
 		do
 		{
-			System.out.println("Escolha uma das opcoes abaixo: ");
-			System.out.println("1.Usuario");
-			System.out.println("2.Seguidores");
-			System.out.println("3.Mensagens");
-			System.out.println("4.Rede");
-			System.out.println("5.Sair");
+			System.out.println("Menu principal");
+			System.out.println("--------------------------");
+			System.out.println("1.Cadastrar Usuario");
+			System.out.println("2.Seguir Usuario");
+			System.out.println("3.Postar,comentar ou ver mensagens");
+			System.out.println("4.Visualizar conexoes");
+			System.out.println("5.Sair do programa");
+			System.out.println("--------------------------");
 			opcoes = in.nextInt();
+			
 			switch(opcoes)
 			{
 				case 1:
@@ -66,32 +71,36 @@ public class Menu
 		
 		do
 		{	
-			
-			System.out.println("Escolha uma das opcoes abaixo: ");
-			System.out.println("1.Cadastrar");
-			System.out.println("2.Excluir");
-			System.out.println("3.Pesquisar");
-			System.out.println("4.Alterar");
-			System.out.println("5.Listar");
-			System.out.println("6.Sair");
+			System.out.println("------------------------");
+			System.out.println("Relacionado Ao Usuario");
+			System.out.println("1.Cadastrar ");
+			System.out.println("2.Deletar  ");
+			System.out.println("3.Pesquisar ");
+			System.out.println("4.Editar ");
+			System.out.println("5.Listar ");
+			System.out.println("6.Voltar ao menu anterior");
+			System.out.println("------------------------");
 			opcoes = in.nextInt();
 			switch(opcoes)
 			{
 				case 1:
-					System.out.println("Digite o login");
+					System.out.println("Crie um login");
 					login = stringScan.nextLine();
-					System.out.println("Digite o nome");
+					System.out.println("Digite o seu nome");
 					nome = stringScan.nextLine();
-					System.out.println("Digite o email");
+					System.out.println("Digite o seu email");
 					email = stringScan.nextLine();
-					System.out.println("Digite a data de Nascimento");
+					System.out.println("Digite seu data de Nascimento");
 					dataNascimento = DataToString();
+					System.out.println("--------------------------------");
+					System.out.println("USUaRIO CADASTRADO COM SUCESSO!");
+					System.out.println("--------------------------------");
 					//HashMap
 					ArrayList<String> initSeguidores = new ArrayList<String>(); 
 					ArrayList<String> initSeguindo = new ArrayList<String>(); 
 					mapUsuarios.put(login,new Usuario(login,nome,email,dataNascimento,initSeguidores,initSeguindo));
 					ArrayList<ArrayList<String>> initMensagem = new ArrayList<ArrayList<String>>();
-					mapMensagens.put(login,new Mensagens(initMensagem));//Cria lista de publicações associada a cada usuario
+					mapMensagens.put(login,new Mensagens(initMensagem));//Cria lista de publicaï¿½ï¿½es associada a cada usuario
 					break;
 				case 2:
 					//Excluir
@@ -167,13 +176,14 @@ public class Menu
 		Scanner stringScan = new Scanner (System.in);
 		
 		
-
-		System.out.println("Escolha uma das opcoes abaixo: ");
-		System.out.println("1.Seguir:");
-		System.out.println("2.Cancelar Seguir");
-		System.out.println("3.Mostrar seguidores");
-		System.out.println("4.Mostrar os seguidos");
-		System.out.println("5.Sair");
+		System.out.println("-----------------------------------");
+		System.out.println("Crie conexoes e expanda a sua rede!");
+		System.out.println("1.Comecar a Seguir:");
+		System.out.println("2.Deixar de Seguir");
+		System.out.println("3.Mostrar meus seguidores");
+		System.out.println("4.Mostrar quem estou seguindo");
+		System.out.println("5.Voltar ao menu anterior");
+		System.out.println("-----------------------------------");
 		opcoes = in.nextInt();	
 		
 		String user1=" ",user2="";
@@ -182,17 +192,20 @@ public class Menu
 		{
 			case 1:
 				
-				System.out.println("Digite o login do usuario que vai seguir: ");
+				System.out.println("Digite o seu login: ");
 				user1 = stringScan.nextLine();//usuario 1
 				if( mapUsuarios.get(user1) != null)
 				{
-					System.out.println("Digite o login do usuario a ser seguido: ");
+					System.out.println("Digite o login da pessoa que vocï¿½ quer seguir: ");
 					user2 = stringScan.nextLine();//usuario 2
 					
 					if(mapUsuarios.get(user2) != null)
 					{
 						mapUsuarios.get(user2).addSeguidores(user1);
 						mapUsuarios.get(user1).addSeguidos(user2);
+						System.out.println("-----------------------------");
+						System.out.println("Voce comecou a seguir "+user2);
+						System.out.println("-----------------------------");
 					}
 					else
 						System.out.println("Nao existem usuarios com esse login\n");
@@ -273,11 +286,14 @@ public class Menu
 		int opcoes = 0;
 		Scanner in = new Scanner (System.in);
 		Scanner stringScan = new Scanner (System.in);
-		System.out.println("Escolha uma das opcoes abaixo: ");
-		System.out.println("1.Registrar mensagem");
-		System.out.println("2.Comentar mensagem");
-		System.out.println("3.Ver mensagens");
-		System.out.println("4.Sair");
+
+		System.out.println("----------------------------------------- ");
+		System.out.println("  PUBLICACOES: ");
+		System.out.println("1.Postar Mensagem");
+		System.out.println("2.Comentar Publicacao");
+		System.out.println("3.Ver Publicacoes");
+		System.out.println("4.Voltar para menu anterior");
+		System.out.println("----------------------------------------- ");
 		opcoes = in.nextInt();
 		
 		String user1=" ",user2="";
@@ -289,18 +305,20 @@ public class Menu
 		{
 			case 1:
 				/****/
-				System.out.println("Digite o login do usuario que vai escrever a mensagem: ");
+				System.out.println("Digite o seu login: ");
 				user1 = stringScan.nextLine();//usuario 1
 				if( mapUsuarios.get(user1) != null)
 				{
-					System.out.println("Digite a mensagem inicial da sua publicacao: ");
+					System.out.println("Digite sua publicacao: ");
 					mensagem = stringScan.nextLine();
 					mensagem += userList.getHourNow();
 					ArrayList<String> listaPublicacoes = new ArrayList<String>();//Lista de publicacoes nova
 					listaPublicacoes.add(mensagem);
 					
 					mapMensagens.get(user1).getPubliComent().add(listaPublicacoes);
-					System.out.println("Sua publicacao foi craida com sucesso! \n ");
+					System.out.println("----------------------------------------- ");	
+					System.out.println("Sua Mensagem foi publicada com sucesso! \n ");
+					System.out.println("----------------------------------------- ");
 				}
 				else
 				{
@@ -308,10 +326,12 @@ public class Menu
 				}
 				break;
 			case 2:
+				System.out.println("Digite o login do usuario de quem vai ver as mensagens: ");
+				user1 = stringScan.nextLine();
 				
 				break;
 			case 3:
-				System.out.println("Digite o login do usuario de quem vai ver as mensagens: ");
+				System.out.println("Digite o login da pessoa que deseja ver as mensagens: ");
 				user1 = stringScan.nextLine();//usuario 1
 				ArrayList<ArrayList<String>> verListas = new ArrayList<ArrayList<String>>();
 				verListas =  mapMensagens.get(user1).getPubliComent();
@@ -320,10 +340,12 @@ public class Menu
 				{
 					for(int i = 0; i< verListas.size();i++)
 					{
-						System.out.printf("Publicacao %d :",i);
+
+						System.out.println("---------------CEFET-MENSAGEM------------- ");
+						System.out.printf("Publicacao %d do %s :",i,user1);
 						System.out.println(verListas.get(i));
 						System.out.println("");
-						
+						System.out.println("----------------------------------------- ");
 					}
 				}
 				break;
@@ -339,10 +361,12 @@ public class Menu
 		int opcoes = 0;
 		Scanner in = new Scanner (System.in);
 		Scanner stringScan = new Scanner (System.in);
-		System.out.println("Escolha uma das opcoes abaixo: ");
-		System.out.println("1.Ver Seguidores:");
-		System.out.println("2.Seguidos:");
-		System.out.println("3.Sair");
+		System.out.println("----------------------------------------- ");
+		System.out.println("ConexOes: ");
+		System.out.println("1.Ver meus Seguidores:");
+		System.out.println("2.Ver quem estou Seguindo:");
+		System.out.println("3.Voltar para menu anterior");
+		System.out.println("----------------------------------------- ");
 		opcoes = in.nextInt();
 		switch(opcoes)
 		{
@@ -368,9 +392,9 @@ public class Menu
 		String data,barra="/";
 		Scanner stringScan = new Scanner (System.in);
        
-		System.out.println("Digite o dia");
+		System.out.println("Digite o dia do nascimento:");
 		dia = stringScan.nextLine();
-		System.out.println("Digite o mes");
+		System.out.println("Agora digite o mes: de 1 a 12");
 		mes = stringScan.nextLine();
 		System.out.println("Digite o Ano");
 		ano = stringScan.nextLine();
