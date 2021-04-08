@@ -73,11 +73,11 @@ public class Menu
 		{	
 			System.out.println("------------------------");
 			System.out.println("Relacionado Ao Usuario");
-			System.out.println("1.Cadastrar ");
-			System.out.println("2.Deletar  ");
-			System.out.println("3.Pesquisar ");
-			System.out.println("4.Editar ");
-			System.out.println("5.Listar ");
+			System.out.println("1.Cadastrar ");//FEITO
+			System.out.println("2.Deletar  ");//FEITO
+			System.out.println("3.Pesquisar ");//FEITO
+			System.out.println("4.Editar ");//FEITO
+			System.out.println("5.Listar ");//FEITO
 			System.out.println("6.Voltar ao menu anterior");
 			System.out.println("------------------------");
 			opcoes = in.nextInt();
@@ -93,7 +93,7 @@ public class Menu
 					System.out.println("Digite seu data de Nascimento");
 					dataNascimento = DataToString();
 					System.out.println("--------------------------------");
-					System.out.println("USUaRIO CADASTRADO COM SUCESSO!");
+					System.out.println("USUARIO CADASTRADO COM SUCESSO!");
 					System.out.println("--------------------------------");
 					//HashMap
 					ArrayList<String> initSeguidores = new ArrayList<String>(); 
@@ -152,6 +152,7 @@ public class Menu
 					break;
 				case 5:
 					//listar
+					//Breno
 					String key;
 					 for (Map.Entry me : mapUsuarios.entrySet())
 					 {
@@ -178,8 +179,8 @@ public class Menu
 		
 		System.out.println("-----------------------------------");
 		System.out.println("Crie conexoes e expanda a sua rede!");
-		System.out.println("1.Comecar a Seguir:");
-		System.out.println("2.Deixar de Seguir");
+		System.out.println("1.Comecar a Seguir:");//FEITO
+		System.out.println("2.Deixar de Seguir");//FEITO
 		System.out.println("3.Voltar ao menu anterior");
 		System.out.println("-----------------------------------");
 		opcoes = in.nextInt();	
@@ -250,9 +251,9 @@ public class Menu
 
 		System.out.println("----------------------------------------- ");
 		System.out.println("  PUBLICACOES: ");
-		System.out.println("1.Postar Mensagem");
-		System.out.println("2.Comentar Publicacao");
-		System.out.println("3.Ver Publicacoes");
+		System.out.println("1.Postar Mensagem");//FEITO 
+		System.out.println("2.Comentar Publicacao");//FEITO
+		System.out.println("3.Ver Publicacoes");//PRECISA DE MELHORIAS
 		System.out.println("4.Voltar para menu anterior");
 		System.out.println("----------------------------------------- ");
 		opcoes = in.nextInt();
@@ -273,7 +274,6 @@ public class Menu
 					mensagem = user1+ " ";
 					System.out.println("Digite sua publicacao: ");
 					subMensagem += stringScan.nextLine();
-					
 					mensagem += subMensagem + userList.getHourNow();
 					ArrayList<String> listaPublicacoes = new ArrayList<String>();//Lista de publicacoes nova
 					listaPublicacoes.add(mensagem);
@@ -338,10 +338,16 @@ public class Menu
 
 						System.out.println("----------------------------------------- ");
 						System.out.printf("Publicacao %d do %s :",i,user1);
-						System.out.println(verListas.get(i));
+						System.out.println(verListas.get(i).get(0));
 						System.out.println("");
 						System.out.println("----------------------------------------- ");
 					}
+				}
+				System.out.println("Escolha  a publicacao que voce quer expandir");
+				index = in.nextInt();
+				for(int i = 0; i< verListas.get(index).size();i++)
+				{
+					System.out.println(verListas.get(index).get(i));
 				}
 				break;
 			case 4:
@@ -358,10 +364,10 @@ public class Menu
 		Scanner stringScan = new Scanner (System.in);
 		System.out.println("----------------------------------------- ");
 		System.out.println("ConexOes: ");
-		System.out.println("1.Ver meus Seguidores:");
-		System.out.println("2.Ver quem estou Seguindo:");
+		System.out.println("1.Ver meus Seguidores:");//FEITO
+		System.out.println("2.Ver quem estou Seguindo:");//FEITO
 		System.out.println("3.Mais influente:");
-		System.out.println("4.Ocorrência de assunto:");
+		System.out.println("4.Ocorrencia de assunto:");
 		System.out.println("5.Voltar para menu anterior");
 		System.out.println("----------------------------------------- ");
 		opcoes = in.nextInt();
@@ -422,10 +428,10 @@ public class Menu
 		System.out.println("----------------------------------------- ");
 		System.out.println("Cadastros: ok! ");
 		System.out.println("Seguidores: ok!");
-		System.out.println("Mensagens e comentarios: 50%");
+		System.out.println("Mensagens e comentarios: 70%");
 		System.out.println("Rede: 50%");
 		System.out.println("Restricoes:");
-		System.out.println("-Usuario só pode comentar mensagem de outro : nao feito");
+		System.out.println("-Usuario so pode comentar mensagem de outro : nao feito");
 		System.out.println("-Maximo de 140 caracteres : nao feito");
 		System.out.println("Apagar comentarios e remover seguidores quando usuario excluido : nao feito");
 		System.out.println("----------------------------------------- ");
