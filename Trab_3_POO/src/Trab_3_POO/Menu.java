@@ -147,18 +147,32 @@ public class Menu
 					//Remove listas publicacoes
 					 mapMensagens.remove(login);
 					 
-			         /* //Remove comentarios em publicacoes
-			         for (Map.Entry me : mapMensagens.entrySet())
-					 {
-				          key = (String) me.getKey();
-				          //Remove da lista de seguidores
-				          if(mapUsuarios.get(key))
-				          {
-				        	  
-				          }
-				         
-				          
-					 }*/
+			         /* //Remove comentarios em publicacoes*/
+			         //Percorre todos os usuarios
+					String mensagem = "";
+					ArrayList<ArrayList<String>> verListas = new ArrayList<ArrayList<String>>();
+					for (Map.Entry me : mapMensagens.entrySet())
+					{
+						
+						
+						key = (String) me.getKey();
+						verListas =  mapMensagens.get(key).getPubliComent();
+						//Percorre todas as publicacoces dos usuarios
+						  for(int i=0;i< verListas.size();i++ )
+						  {
+							 
+							 for(int j=0;j< verListas.get(i).size();j++)
+							 {
+								 //Percorre todas os comentarios
+								 mensagem = verListas.get(i).get(j);
+								 if(mensagem.contains(login))
+								 {
+									mensagem = verListas.get(i).remove(j);
+								 }
+							 }
+							 
+						  }
+					 }
 					break;
 				case 3:
 					//Pesquisar
