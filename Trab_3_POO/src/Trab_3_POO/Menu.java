@@ -498,21 +498,35 @@ public class Menu
 				 
 				break;
 			case 4:
+				ArrayList<ArrayList<String>> verListas = new ArrayList<ArrayList<String>>();
 				String expressao =" ";
 				int ocorrencia =0;
+				String mensagem=" ";
+				
 				System.out.println("Entre com a expressao que vc quer analisar a ocorrencia de assunto: ");
 				expressao = stringScan.nextLine();
 				
+				//Percorre todos os usuarios
 				for (Map.Entry me : mapMensagens.entrySet())
 				{
-			          key = (String) me.getKey();
-			          for(int i=0;i< mapMensagens.get(key).getPubliComent().size();i++ )
-			          {
-			        	 if(mapMensagens.get(key).getPubliComent().get(i).contains(expressao)) 
-			        		 ocorrencia++;
-			          }
+					
+					
+					key = (String) me.getKey();
+					verListas =  mapMensagens.get(key).getPubliComent();
+					//Percorre todas as publicacoces dos usuarios
+					  for(int i=0;i< verListas.size();i++ )
+					  {
+						 
+						 for(int j=0;j< verListas.get(i).size();j++)
+						 {
+							 mensagem = verListas.get(i).get(j);
+							 if(mensagem.contains(expressao))
+								 ocorrencia++;
+						 }
+						 
+					  }
 				 }
-				System.out.println("A expressao "+expressao+" ocorreu"+ocorrencia+" vezes");
+				System.out.println("A expressao "+expressao+" ocorreu "+ocorrencia+" vezes");
 				break;
 			default:
 				break;
