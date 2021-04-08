@@ -370,7 +370,10 @@ public class Menu
 									System.out.println("O seu comentario e muito grande, por isso ele foi reduzido.");
 								}
 								else
+								{	
 									mapMensagens.get(user1).addComentario(mensagem,index);
+									System.out.println("Comentario registrado\n");
+								}
 							}
 								else
 								{
@@ -455,6 +458,7 @@ public class Menu
 		System.out.println("----------------------------------------- ");
 		opcoes = in.nextInt();
 		String user1=" ",user2="";
+		String loginUser=" ";
 		switch(opcoes)
 		{
 			case 1:
@@ -467,6 +471,8 @@ public class Menu
 					{
 						System.out.printf("%d =",i);
 						System.out.println(mapUsuarios.get(user1).getSeguidores().get(i));
+						loginUser=mapUsuarios.get(user1).getSeguidores().get(i);
+						System.out.println(" Nome :"+mapUsuarios.get(loginUser).getNome());
 						System.out.println("");
 					}
 				}
@@ -510,7 +516,7 @@ public class Menu
 			          }
 				 }
 				if(max != 0)
-					System.out.println("O usuario com mais seguidores e o "+nomeUser+" com "+ max +" seguidores");
+					System.out.println("O usuario com mais seguidores e o "+nomeUser+" com "+ max +" seguidores e seu nome e "+mapUsuarios.get(nomeUser).getNome());
 				else
 					System.out.println("Nao temos usuarios mais influentes");
 				 
