@@ -403,23 +403,28 @@ public class Menu
 				if( mapUsuarios.get(user1) != null)
 				{
 					verListas =  mapMensagens.get(user1).getPubliComent();
-					
-					for(int i = 0; i< verListas.size();i++)
+					if( verListas.size() !=0 )
 					{
-
-						System.out.println("----------------------------------------- ");
-						System.out.printf("Publicacao %d do %s :",i,user1);
-						System.out.println(verListas.get(i).get(0));
-						System.out.println("");
-						System.out.println("----------------------------------------- ");
+						for(int i = 0; i< verListas.size();i++)
+						{
+	
+							System.out.println("----------------------------------------- ");
+							System.out.printf("Publicacao %d do %s :",i,user1);
+							System.out.println(verListas.get(i).get(0));
+							System.out.println("");
+							System.out.println("----------------------------------------- ");
+						}
+						System.out.println("Escolha  a publicacao que voce quer expandir");
+						index = in.nextInt();
+						for(int i = 0; i< verListas.get(index).size();i++)
+						{
+							System.out.println(verListas.get(index).get(i));
+						}
 					}
-					System.out.println("Escolha  a publicacao que voce quer expandir");
-					index = in.nextInt();
-					for(int i = 0; i< verListas.get(index).size();i++)
+					else
 					{
-						System.out.println(verListas.get(index).get(i));
+						System.out.println("Nao existem publicacoes desse login\n");
 					}
-					
 				}
 				else
 				{
