@@ -63,7 +63,7 @@ public class Menu
 	public void menuUsuario()
 	{
 		int opcoes = 0;
-		
+		String key;
 			
 		
 		Scanner in = new Scanner (System.in);
@@ -114,6 +114,26 @@ public class Menu
 					}  
 					else
 						System.out.println("Nao existem usuarios com esse login");
+					
+					 for (Map.Entry me : mapUsuarios.entrySet())
+					 {
+				          key = (String) me.getKey();
+				          //Remove da lista de seguidores
+				          if(mapUsuarios.get(key).getSeguidores().contains(login))
+				          {
+				        	  mapUsuarios.get(key).getSeguidores().remove(login);
+				          }
+				          //Remove da lista de seguidos
+				          if(mapUsuarios.get(key).getSeguidos().contains(login))
+				          {
+				        	  mapUsuarios.get(key).getSeguidos().remove(login);
+				          }
+				          
+					 }
+					//Remove listas publicacoes
+			          
+			          //Remove comentarios em publicacoes
+			          
 					break;
 				case 3:
 					//Pesquisar
@@ -152,8 +172,7 @@ public class Menu
 					break;
 				case 5:
 					//listar
-					
-					String key;
+
 					 for (Map.Entry me : mapUsuarios.entrySet())
 					 {
 				          key = (String) me.getKey();
@@ -460,7 +479,7 @@ public class Menu
 		System.out.println("Cadastros: ok! ");
 		System.out.println("Seguidores: ok!");
 		System.out.println("Mensagens e comentarios: 90%");
-		System.out.println("Rede: 50%");
+		System.out.println("Rede: 60%%");
 		System.out.println("Restricoes:");
 		System.out.println("-Usuario so pode comentar mensagem de outro :  ok!");
 		System.out.println("-Maximo de 140 caracteres : nao feito");
