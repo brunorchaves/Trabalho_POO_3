@@ -258,16 +258,16 @@ public class Menu
 				
 				if(mapUsuarios.get(user1) != null)
 				{
-					for(int i = 0; i< mapUsuarios.get(user1).getSeguidores().size();i++)
+					for(int i = 0; i< mapUsuarios.get(user1).getSeguidos().size();i++)
 					{
 						System.out.printf("%d =",i);
-						System.out.println(mapUsuarios.get(user1).getSeguidores().get(i));
+						System.out.println(mapUsuarios.get(user1).getSeguidos().get(i));
 						System.out.println("");
 					}
 				}
 				System.out.println("Digite a posicao do usuario que vai remover : ");
 				index = in.nextInt();
-				mapUsuarios.get(user1).getSeguidores().remove(index);
+				mapUsuarios.get(user1).getSeguidos().remove(index);
 				System.out.println("O usuario escolhido foi removido ");
 				
 				break;
@@ -352,32 +352,39 @@ public class Menu
 					index = in.nextInt();
 					System.out.println("Digite o login do usuario vai comentar as publicacao: ");
 					user2 = stringScan.nextLine();
-					if( mapUsuarios.get(user2).getSeguidos().contains(user1)) 
+					if(mapUsuarios.get(user2) != null)
 					{
-						
-
-							if( mapUsuarios.get(user2) != null)
-							{
-								mensagem = user2 + " ";
-								System.out.println("Digite seu comentario: ");
-								mensagem += stringScan.nextLine();
-								mensagem += userList.getHourNow();
-								tamanhoString = mensagem.length();
-							if(tamanhoString > 140) {
-								mapMensagens.get(user1).addComentario(mensagem.substring(0, 140),index);
-								System.out.println("O seu comentario e muito grande, por isso ele foi reduzido.");
+						if( mapUsuarios.get(user2).getSeguidos().contains(user1)) 
+						{
+							
+	
+								if( mapUsuarios.get(user2) != null)
+								{
+									mensagem = user2 + " ";
+									System.out.println("Digite seu comentario: ");
+									mensagem += stringScan.nextLine();
+									mensagem += userList.getHourNow();
+									tamanhoString = mensagem.length();
+								if(tamanhoString > 140) {
+									mapMensagens.get(user1).addComentario(mensagem.substring(0, 140),index);
+									System.out.println("O seu comentario e muito grande, por isso ele foi reduzido.");
+								}
+								else
+									mapMensagens.get(user1).addComentario(mensagem,index);
 							}
-							else
-								mapMensagens.get(user1).addComentario(mensagem,index);
+								else
+								{
+									System.out.println("Nao existem usuarios com esse login\n");
+								}
 						}
-							else
-							{
-								System.out.println("Nao existem usuarios com esse login\n");
-							}
+						else
+						{
+							System.out.println("Voce nao esta seguindo essa pessoa para fazer comentarios\n");
+						}
 					}
 					else
 					{
-						System.out.println("Voce nao esta seguindo essa pessoa para fazer comentarios\n");
+						System.out.println("Nao existem usuarios com esse login\n");
 					}
 					
 				}
