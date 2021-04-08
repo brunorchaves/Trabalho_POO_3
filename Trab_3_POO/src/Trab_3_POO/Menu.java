@@ -180,9 +180,7 @@ public class Menu
 		System.out.println("Crie conexoes e expanda a sua rede!");
 		System.out.println("1.Comecar a Seguir:");
 		System.out.println("2.Deixar de Seguir");
-		System.out.println("3.Mostrar meus seguidores");
-		System.out.println("4.Mostrar quem estou seguindo");
-		System.out.println("5.Voltar ao menu anterior");
+		System.out.println("3.Voltar ao menu anterior");
 		System.out.println("-----------------------------------");
 		opcoes = in.nextInt();	
 		
@@ -236,45 +234,8 @@ public class Menu
 				System.out.println("O usuario escolhido foi removido ");
 				
 				break;
+		
 			case 3:
-				System.out.println("Digite o login do usuario de quem que vai ver os seguidores : ");
-				user1 = stringScan.nextLine();//usuario 1
-				
-				if(mapUsuarios.get(user1) != null)
-				{
-					for(int i = 0; i< mapUsuarios.get(user1).getSeguidores().size();i++)
-					{
-						System.out.printf("%d =",i);
-						System.out.println(mapUsuarios.get(user1).getSeguidores().get(i));
-						System.out.println("");
-					}
-				}
-				else
-				{
-					System.out.println("Nao existem usuarios com esse login\n");
-				}
-				
-				break;
-			case 4:
-				System.out.println("Digite o login do usuario de quem que vai ver os seguidos : ");
-				user1 = stringScan.nextLine();//usuario 1
-				
-				if(mapUsuarios.get(user1) != null)
-				{
-					for(int i = 0; i< mapUsuarios.get(user1).getSeguidos().size();i++)
-					{
-						System.out.printf("%d =",i);
-						System.out.println(mapUsuarios.get(user1).getSeguidos().get(i));
-						System.out.println("");
-					}
-				}
-				else
-				{
-					System.out.println("Nao existem usuarios com esse login\n");
-				}
-				
-				break;
-			case 5:
 				
 				break;
 			default:
@@ -299,7 +260,7 @@ public class Menu
 		String user1=" ",user2="";
 		int index = 0;
 		String mensagem;
-		
+		String subMensagem=" ";
 		
 		switch(opcoes)
 		{
@@ -311,8 +272,9 @@ public class Menu
 				{
 					mensagem = user1+ " ";
 					System.out.println("Digite sua publicacao: ");
-					mensagem += stringScan.nextLine();
-					mensagem += userList.getHourNow();
+					subMensagem += stringScan.nextLine();
+					
+					mensagem += subMensagem + userList.getHourNow();
 					ArrayList<String> listaPublicacoes = new ArrayList<String>();//Lista de publicacoes nova
 					listaPublicacoes.add(mensagem);
 					
@@ -398,16 +360,49 @@ public class Menu
 		System.out.println("ConexOes: ");
 		System.out.println("1.Ver meus Seguidores:");
 		System.out.println("2.Ver quem estou Seguindo:");
-		System.out.println("3.Voltar para menu anterior");
+		System.out.println("3.Mais influente:");
+		System.out.println("4.Ocorrência de assunto:");
+		System.out.println("5.Voltar para menu anterior");
 		System.out.println("----------------------------------------- ");
 		opcoes = in.nextInt();
+		String user1=" ",user2="";
 		switch(opcoes)
 		{
 			case 1:
+				System.out.println("Digite o login do usuario de quem que vai ver os seguidores : ");
+				user1 = stringScan.nextLine();//usuario 1
 				
+				if(mapUsuarios.get(user1) != null)
+				{
+					for(int i = 0; i< mapUsuarios.get(user1).getSeguidores().size();i++)
+					{
+						System.out.printf("%d =",i);
+						System.out.println(mapUsuarios.get(user1).getSeguidores().get(i));
+						System.out.println("");
+					}
+				}
+				else
+				{
+					System.out.println("Nao existem usuarios com esse login\n");
+				}
 				break;
 			case 2:
+				System.out.println("Digite o login do usuario de quem que vai ver os seguidos : ");
+				user1 = stringScan.nextLine();//usuario 1
 				
+				if(mapUsuarios.get(user1) != null)
+				{
+					for(int i = 0; i< mapUsuarios.get(user1).getSeguidos().size();i++)
+					{
+						System.out.printf("%d =",i);
+						System.out.println(mapUsuarios.get(user1).getSeguidos().get(i));
+						System.out.println("");
+					}
+				}
+				else
+				{
+					System.out.println("Nao existem usuarios com esse login\n");
+				}
 				break;
 			case 3:
 				
