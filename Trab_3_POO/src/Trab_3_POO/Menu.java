@@ -293,7 +293,12 @@ public class Menu
 					System.out.println("Digite sua publicacao: ");
 					subMensagem += stringScan.nextLine();
 					tamanhoString = subMensagem.length();
-					mensagem += subMensagem.subSequence(0, 140) + userList.getHourNow();
+					if(tamanhoString > 140) {
+						mensagem += subMensagem.subSequence(0, 140) + userList.getHourNow();
+						System.out.println("A sua publicacao e grande de mais, por isso ela foi reduzida.");
+					}
+					else
+						mensagem += subMensagem + userList.getHourNow();
 					ArrayList<String> listaPublicacoes = new ArrayList<String>();//Lista de publicacoes nova
 					listaPublicacoes.add(mensagem);
 					
@@ -301,9 +306,7 @@ public class Menu
 					System.out.println("----------------------------------------- ");	
 					System.out.println("Sua Mensagem foi publicada com sucesso! \n ");
 					System.out.println("----------------------------------------- ");
-					if(tamanhoString > 140) {
-						System.out.println("A sua publicacao e grande de mais, por isso ela foi reduzida.");
-					}
+					
 					
 					
 					}
@@ -343,9 +346,11 @@ public class Menu
 								mensagem += userList.getHourNow();
 								tamanhoString = mensagem.length();
 							if(tamanhoString > 140) {
-								System.out.println("O seu coment�rio e muito grande, por isso ele foi reduzido.");
+								mapMensagens.get(user1).addComentario(mensagem.substring(0, 140),index);
+								System.out.println("O seu comentario e muito grande, por isso ele foi reduzido.");
 							}
-							mapMensagens.get(user1).addComentario(mensagem.substring(0, 140),index);
+							else
+								mapMensagens.get(user1).addComentario(mensagem,index);
 						}
 							else
 							{
@@ -473,7 +478,7 @@ public class Menu
 				 
 				break;
 			case 4:
-				String expressao;
+				String expressao =" ";
 				int ocorrencia =0;
 				System.out.println("Entre com a expressao que vc quer analisar a ocorrencia de assunto: ");
 				expressao = stringScan.nextLine();
@@ -481,8 +486,11 @@ public class Menu
 				for (Map.Entry me : mapMensagens.entrySet())
 				{
 			          key = (String) me.getKey();
-			          if(mapMensagens.get(key).getPubliComent().contains(expressao))	  
-			        	ocorrencia++;
+			          for(int i=0;i< mapMensagens.get(key).getPubliComent().size();i++ )
+			          {
+			        	 if(mapMensagens.get(key).getPubliComent().get(i).contains(expressao)) 
+			        		 ocorrencia++;
+			          }
 				 }
 				System.out.println("A expressao "+expressao+" ocorreu"+ocorrencia+" vezes");
 				break;
