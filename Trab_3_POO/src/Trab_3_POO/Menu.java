@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Scanner; 
 import java.util.Map;
 
-
 public class Menu 
 {
 	
@@ -278,7 +277,7 @@ public class Menu
 		opcoes = in.nextInt();
 		
 		String user1=" ",user2="";
-		int index = 0;
+		int index = 0,tamanhoString,endIndex = 140;
 		String mensagem;
 		String subMensagem=" ";
 		
@@ -293,7 +292,8 @@ public class Menu
 					mensagem = user1+ " ";
 					System.out.println("Digite sua publicacao: ");
 					subMensagem += stringScan.nextLine();
-					mensagem += subMensagem + userList.getHourNow();
+					tamanhoString = subMensagem.length();
+					mensagem += subMensagem.subSequence(0, 140) + userList.getHourNow();
 					ArrayList<String> listaPublicacoes = new ArrayList<String>();//Lista de publicacoes nova
 					listaPublicacoes.add(mensagem);
 					
@@ -301,7 +301,12 @@ public class Menu
 					System.out.println("----------------------------------------- ");	
 					System.out.println("Sua Mensagem foi publicada com sucesso! \n ");
 					System.out.println("----------------------------------------- ");
-				}
+					if(tamanhoString > 140) {
+						System.out.println("A sua publicacao e grande de mais, por isso ela foi reduzida.");
+					}
+					
+					
+					}
 				else
 				{
 					System.out.println("Nao existem usuarios com esse login\n");
@@ -336,8 +341,12 @@ public class Menu
 								System.out.println("Digite seu comentario: ");
 								mensagem += stringScan.nextLine();
 								mensagem += userList.getHourNow();
-								mapMensagens.get(user1).addComentario(mensagem,index);
+								tamanhoString = mensagem.length();
+							if(tamanhoString > 140) {
+								System.out.println("O seu coment�rio e muito grande, por isso ele foi reduzido.");
 							}
+							mapMensagens.get(user1).addComentario(mensagem.substring(0, 140),index);
+						}
 							else
 							{
 								System.out.println("Nao existem usuarios com esse login\n");
@@ -397,7 +406,7 @@ public class Menu
 		System.out.println("ConexOes: ");
 		System.out.println("1.Ver meus Seguidores:");//FEITO
 		System.out.println("2.Ver quem estou Seguindo:");//FEITO
-		System.out.println("3.Mais influente:");//30%
+		System.out.println("3.Mais influente:");//FEITO
 		System.out.println("4.Ocorrencia de assunto:");//0%
 		System.out.println("5.Voltar para menu anterior");
 		System.out.println("----------------------------------------- ");
@@ -479,7 +488,7 @@ public class Menu
 		System.out.println("Cadastros: ok! ");
 		System.out.println("Seguidores: ok!");
 		System.out.println("Mensagens e comentarios: ok!");
-		System.out.println("Rede: 60%%");
+		System.out.println("Rede: 75%");
 		System.out.println("Restricoes:");
 		System.out.println("-Usuario so pode comentar mensagem de outro :  ok!");
 		System.out.println("-Maximo de 140 caracteres : nao feito");
