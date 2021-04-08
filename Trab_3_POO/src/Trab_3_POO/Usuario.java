@@ -109,6 +109,12 @@ public class Usuario {
 		return dataHora;
 		
 	}
+	public int getNumeroSeguidores()
+	{
+		int numeroSeguidores; 
+		numeroSeguidores =this.seguidores.size();
+		return numeroSeguidores;
+	}
 	
 
 }

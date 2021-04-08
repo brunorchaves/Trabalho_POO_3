@@ -424,12 +424,25 @@ public class Menu
 				break;
 			case 3:
 				String key;
-				 for (Map.Entry me : mapMensagens.entrySet())
-				 {
+				String nomeUser = "";
+				int max=0;
+				int numeroSeguidores =0;
+				
+				for (Map.Entry me : mapUsuarios.entrySet())
+				{
 			          key = (String) me.getKey();
-			          mapMensagens.get(key);
-			          
+			          numeroSeguidores= mapUsuarios.get(key).getNumeroSeguidores();
+			          if(numeroSeguidores>=max && max != 0)
+			          {
+			        	  max = numeroSeguidores;
+			        	  nomeUser = key;
+			          }
 				 }
+				if(max != 0)
+					System.out.println("O usuario com mais seguidores e o "+nomeUser+" com "+ max +" seguidores");
+				else
+					System.out.println("Nao temos usuarios mais influentes");
+				 
 				break;
 			case 4:
 				
