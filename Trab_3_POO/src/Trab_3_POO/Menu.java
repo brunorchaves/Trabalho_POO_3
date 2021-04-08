@@ -152,7 +152,7 @@ public class Menu
 					break;
 				case 5:
 					//listar
-					//Breno
+					
 					String key;
 					 for (Map.Entry me : mapUsuarios.entrySet())
 					 {
@@ -423,7 +423,13 @@ public class Menu
 				}
 				break;
 			case 3:
-				
+				String key;
+				 for (Map.Entry me : mapMensagens.entrySet())
+				 {
+			          key = (String) me.getKey();
+			          mapMensagens.get(key);
+			          
+				 }
 				break;
 			case 4:
 				
@@ -440,10 +446,10 @@ public class Menu
 		System.out.println("----------------------------------------- ");
 		System.out.println("Cadastros: ok! ");
 		System.out.println("Seguidores: ok!");
-		System.out.println("Mensagens e comentarios: 70%");
+		System.out.println("Mensagens e comentarios: 90%");
 		System.out.println("Rede: 50%");
 		System.out.println("Restricoes:");
-		System.out.println("-Usuario so pode comentar mensagem de outro : nao feito");
+		System.out.println("-Usuario so pode comentar mensagem de outro :  ok!");
 		System.out.println("-Maximo de 140 caracteres : nao feito");
 		System.out.println("Apagar comentarios e remover seguidores quando usuario excluido : nao feito");
 		System.out.println("----------------------------------------- ");
