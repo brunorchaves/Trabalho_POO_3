@@ -473,7 +473,18 @@ public class Menu
 				 
 				break;
 			case 4:
+				String expressao;
+				int ocorrencia =0;
+				System.out.println("Entre com a expressao que vc quer analisar a ocorrencia de assunto: ");
+				expressao = stringScan.nextLine();
 				
+				for (Map.Entry me : mapMensagens.entrySet())
+				{
+			          key = (String) me.getKey();
+			          if(mapMensagens.get(key).getPubliComent().contains(expressao))	  
+			        	ocorrencia++;
+				 }
+				System.out.println("A expressao "+expressao+" ocorreu"+ocorrencia+" vezes");
 				break;
 			default:
 				break;
@@ -491,7 +502,7 @@ public class Menu
 		System.out.println("Rede: 75%");
 		System.out.println("Restricoes:");
 		System.out.println("-Usuario so pode comentar mensagem de outro :  ok!");
-		System.out.println("-Maximo de 140 caracteres : nao feito");
+		System.out.println("-Maximo de 140 caracteres : ok!");
 		System.out.println("Apagar comentarios e remover seguidores quando usuario excluido : 50%");
 		System.out.println("----------------------------------------- ");
 		
