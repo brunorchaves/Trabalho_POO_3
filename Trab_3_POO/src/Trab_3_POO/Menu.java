@@ -272,7 +272,7 @@ public class Menu
 		System.out.println("  PUBLICACOES: ");
 		System.out.println("1.Postar Mensagem");//FEITO 
 		System.out.println("2.Comentar Publicacao");//FEITO
-		System.out.println("3.Ver Publicacoes");//PRECISA DE MELHORIAS 50%
+		System.out.println("3.Ver Publicacoes");//FEITO
 		System.out.println("4.Voltar para menu anterior");
 		System.out.println("----------------------------------------- ");
 		opcoes = in.nextInt();
@@ -397,8 +397,8 @@ public class Menu
 		System.out.println("ConexOes: ");
 		System.out.println("1.Ver meus Seguidores:");//FEITO
 		System.out.println("2.Ver quem estou Seguindo:");//FEITO
-		System.out.println("3.Mais influente:");
-		System.out.println("4.Ocorrencia de assunto:");
+		System.out.println("3.Mais influente:");//30%
+		System.out.println("4.Ocorrencia de assunto:");//0%
 		System.out.println("5.Voltar para menu anterior");
 		System.out.println("----------------------------------------- ");
 		opcoes = in.nextInt();
@@ -451,7 +451,7 @@ public class Menu
 				{
 			          key = (String) me.getKey();
 			          numeroSeguidores= mapUsuarios.get(key).getNumeroSeguidores();
-			          if(numeroSeguidores>=max && max != 0)
+			          if(numeroSeguidores>=max )
 			          {
 			        	  max = numeroSeguidores;
 			        	  nomeUser = key;
@@ -478,12 +478,12 @@ public class Menu
 		System.out.println("----------------------------------------- ");
 		System.out.println("Cadastros: ok! ");
 		System.out.println("Seguidores: ok!");
-		System.out.println("Mensagens e comentarios: 90%");
+		System.out.println("Mensagens e comentarios: ok!");
 		System.out.println("Rede: 60%%");
 		System.out.println("Restricoes:");
 		System.out.println("-Usuario so pode comentar mensagem de outro :  ok!");
 		System.out.println("-Maximo de 140 caracteres : nao feito");
-		System.out.println("Apagar comentarios e remover seguidores quando usuario excluido : nao feito");
+		System.out.println("Apagar comentarios e remover seguidores quando usuario excluido : 50%");
 		System.out.println("----------------------------------------- ");
 		
 	}
