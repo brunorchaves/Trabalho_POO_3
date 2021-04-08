@@ -29,10 +29,10 @@ public class Menu
 		{
 			System.out.println("Menu principal");
 			System.out.println("--------------------------");
-			System.out.println("1.Cadastrar Usuario");
+			System.out.println("1.Usuario");
 			System.out.println("2.Seguir Usuario");
 			System.out.println("3.Postar,comentar ou ver mensagens");
-			System.out.println("4.Visualizar conexoes");
+			System.out.println("4.Rede");
 			System.out.println("5.Sair do programa");
 			System.out.println("--------------------------");
 			opcoes = in.nextInt();
@@ -80,16 +80,30 @@ public class Menu
 			System.out.println("6.Voltar ao menu anterior");
 			System.out.println("------------------------");
 			opcoes = in.nextInt();
+			
+			boolean loginExistente = false;
 			switch(opcoes)
 			{
 				case 1:
 					System.out.println("Crie um login");
-					login = stringScan.nextLine();
+					do
+					{
+						login = stringScan.nextLine();
+						loginExistente =mapUsuarios.containsKey(login);
+						//Conferir se já existe outro usuario com esse login
+						if(loginExistente)
+						{
+							System.out.println("Esse login já existe!");
+							System.out.println("Escreva outro login :");
+						}
+						
+					}while(loginExistente);
+					
 					System.out.println("Digite o seu nome");
 					nome = stringScan.nextLine();
 					System.out.println("Digite o seu email");
 					email = stringScan.nextLine();
-					System.out.println("Digite seu data de Nascimento");
+					System.out.println("Digite sua data de Nascimento");
 					dataNascimento = DataToString();
 					System.out.println("--------------------------------");
 					System.out.println("USUARIO CADASTRADO COM SUCESSO!");
@@ -175,7 +189,7 @@ public class Menu
 						mapUsuarios.get(login).setNome(nome); 
 						mapUsuarios.get(login).setEmail(email);
 						mapUsuarios.get(login).setDataNascimento(dataNascimento);
-						System.out.println("Os dados do usuï¿½rio "+login+" foram alterados \n");
+						System.out.println("Os dados do usuario "+login+" foram alterados \n");
 					}
 					else
 						System.out.println("Nao existem usuarios com esse login\n");
@@ -225,7 +239,7 @@ public class Menu
 				user1 = stringScan.nextLine();//usuario 1
 				if( mapUsuarios.get(user1) != null)
 				{
-					System.out.println("Digite o login da pessoa que vocï¿½ quer seguir: ");
+					System.out.println("Digite o login da pessoa que voce quer seguir: ");
 					user2 = stringScan.nextLine();//usuario 2
 					
 					if(mapUsuarios.get(user2) != null)
@@ -432,7 +446,7 @@ public class Menu
 		System.out.println("1.Ver meus Seguidores:");//FEITO
 		System.out.println("2.Ver quem estou Seguindo:");//FEITO
 		System.out.println("3.Mais influente:");//FEITO
-		System.out.println("4.Ocorrencia de assunto:");//0%
+		System.out.println("4.Ocorrencia de assunto:");//FEITO%
 		System.out.println("5.Voltar para menu anterior");
 		System.out.println("----------------------------------------- ");
 		opcoes = in.nextInt();
@@ -519,6 +533,7 @@ public class Menu
 						 
 						 for(int j=0;j< verListas.get(i).size();j++)
 						 {
+							 //Percorre todas os comentarios
 							 mensagem = verListas.get(i).get(j);
 							 if(mensagem.contains(expressao))
 								 ocorrencia++;
@@ -541,7 +556,7 @@ public class Menu
 		System.out.println("Cadastros: ok! ");
 		System.out.println("Seguidores: ok!");
 		System.out.println("Mensagens e comentarios: ok!");
-		System.out.println("Rede: 75%");
+		System.out.println("Rede: ok!");
 		System.out.println("Restricoes:");
 		System.out.println("-Usuario so pode comentar mensagem de outro :  ok!");
 		System.out.println("-Maximo de 140 caracteres : ok!");
