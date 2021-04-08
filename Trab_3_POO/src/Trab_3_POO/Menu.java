@@ -129,10 +129,22 @@ public class Menu
 				          }
 				          
 					 }
+					 
 					//Remove listas publicacoes
-			          
-			          //Remove comentarios em publicacoes
-			          
+					 mapMensagens.remove(login);
+					 
+			         /* //Remove comentarios em publicacoes
+			         for (Map.Entry me : mapMensagens.entrySet())
+					 {
+				          key = (String) me.getKey();
+				          //Remove da lista de seguidores
+				          if(mapUsuarios.get(key))
+				          {
+				        	  
+				          }
+				         
+				          
+					 }*/
 					break;
 				case 3:
 					//Pesquisar
@@ -374,10 +386,11 @@ public class Menu
 				System.out.println("Digite o login da pessoa que deseja ver as mensagens: ");
 				user1 = stringScan.nextLine();//usuario 1
 				ArrayList<ArrayList<String>> verListas = new ArrayList<ArrayList<String>>();
-				verListas =  mapMensagens.get(user1).getPubliComent();
 				
 				if( mapUsuarios.get(user1) != null)
 				{
+					verListas =  mapMensagens.get(user1).getPubliComent();
+					
 					for(int i = 0; i< verListas.size();i++)
 					{
 
@@ -387,13 +400,20 @@ public class Menu
 						System.out.println("");
 						System.out.println("----------------------------------------- ");
 					}
+					System.out.println("Escolha  a publicacao que voce quer expandir");
+					index = in.nextInt();
+					for(int i = 0; i< verListas.get(index).size();i++)
+					{
+						System.out.println(verListas.get(index).get(i));
+					}
+					
 				}
-				System.out.println("Escolha  a publicacao que voce quer expandir");
-				index = in.nextInt();
-				for(int i = 0; i< verListas.get(index).size();i++)
+				else
 				{
-					System.out.println(verListas.get(index).get(i));
+					System.out.println("Nao existem usuarios com esse login\n");
 				}
+				
+				
 				break;
 			case 4:
 				
@@ -511,7 +531,7 @@ public class Menu
 		System.out.println("Restricoes:");
 		System.out.println("-Usuario so pode comentar mensagem de outro :  ok!");
 		System.out.println("-Maximo de 140 caracteres : ok!");
-		System.out.println("Apagar comentarios e remover seguidores quando usuario excluido : 50%");
+		System.out.println("Apagar comentarios e remover seguidores quando usuario excluido : 75%");
 		System.out.println("----------------------------------------- ");
 		
 	}
