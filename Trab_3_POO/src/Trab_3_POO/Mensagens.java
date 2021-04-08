@@ -25,5 +25,16 @@ public class Mensagens
 		int tamanho = this.publiComent.size();
 		this.publiComent.get(index).add(comentario);
 	}
+	public void removeComent(int index[])
+	{
+		for(int i =0;i< index.length;i++)
+		{
+			if(index[i]==1 )
+				this.publiComent.get(i).remove(i);
+		}
+		
+	}
+	
+	
 	
 }

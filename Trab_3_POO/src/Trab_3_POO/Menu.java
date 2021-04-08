@@ -147,32 +147,10 @@ public class Menu
 					//Remove listas publicacoes
 					 mapMensagens.remove(login);
 					 
-			         /* //Remove comentarios em publicacoes*/
-			         //Percorre todos os usuarios
-					String mensagem = "";
-					ArrayList<ArrayList<String>> verListas = new ArrayList<ArrayList<String>>();
-					for (Map.Entry me : mapMensagens.entrySet())
-					{
-						
-						
-						key = (String) me.getKey();
-						verListas =  mapMensagens.get(key).getPubliComent();
-						//Percorre todas as publicacoces dos usuarios
-						  for(int i=0;i< verListas.size();i++ )
-						  {
-							 
-							 for(int j=0;j< verListas.get(i).size();j++)
-							 {
-								 //Percorre todas os comentarios
-								 mensagem = verListas.get(i).get(j);
-								 if(mensagem.contains(login))
-								 {
-									mensagem = verListas.get(i).remove(j);
-								 }
-							 }
-							 
-						  }
-					 }
+			         /* //Remove comentarios em publicacoes que tem o login da pessoa*/
+			        
+					 clearComents(login);
+					 
 					break;
 				case 3:
 					//Pesquisar
@@ -592,5 +570,64 @@ public class Menu
 		ano = stringScan.nextLine();
 		data =dia + barra + mes + barra +ano ;
 		return data;
+	}
+	
+	public void clearComents(String login)
+	{
+		int estado = 0;
+		boolean limpo = false;
+		boolean contem = false;
+		int index_i=0, index_j=0;
+		final int Estado_checaSeContem=0;
+		final int Estado_remove=1;
+		
+		do
+		{
+			String mensagem = "";
+            String key = "";
+            ArrayList<ArrayList<String>> verListas = new ArrayList<ArrayList<String>>();
+			switch(estado)
+			{
+				case Estado_checaSeContem:
+                    
+                    for (Map.Entry me : mapMensagens.entrySet())
+                    {
+                        
+                        key = (String) me.getKey();
+                        verListas =  mapMensagens.get(key).getPubliComent();
+                        //Percorre todas as publicacoces dos usuarios
+                          for(int i=0;i< verListas.size();i++ )
+                          {
+                             
+                             for(int j=0;j< verListas.get(i).size();j++)
+                             {
+                                 //Percorre todas os comentarios
+                                 mensagem = verListas.get(i).get(j);
+                                 if(mensagem.contains(login))
+                                 {
+                                    estado = Estado_remove;
+                                    index_i = i;
+                                    index_j =j;
+                                    contem = true;
+                                    mensagem = verListas.get(index_i).remove(index_j);
+                                    break;
+                                 }
+                                 
+                             }
+                             
+                          }
+                     }
+                    if(contem == false)
+                    	limpo= true;
+					break;
+				case Estado_remove:
+					contem = false;
+					estado = Estado_checaSeContem;
+					break;
+				default:
+					break;
+					
+			}
+		}while(!limpo);
 	}
 }
