@@ -253,7 +253,7 @@ public class Menu
 		System.out.println("  PUBLICACOES: ");
 		System.out.println("1.Postar Mensagem");//FEITO 
 		System.out.println("2.Comentar Publicacao");//FEITO
-		System.out.println("3.Ver Publicacoes");//PRECISA DE MELHORIAS
+		System.out.println("3.Ver Publicacoes");//PRECISA DE MELHORIAS 50%
 		System.out.println("4.Voltar para menu anterior");
 		System.out.println("----------------------------------------- ");
 		opcoes = in.nextInt();
@@ -299,7 +299,7 @@ public class Menu
 
 						System.out.println("----------------------------------------- ");
 						System.out.printf("Publicacao %d do %s :",i,user1);
-						System.out.println(mapMensagens.get(user1).getPubliComent().get(i));
+						System.out.println(mapMensagens.get(user1).getPubliComent().get(i).get(0));
 						System.out.println("");
 						System.out.println("----------------------------------------- ");
 					}
@@ -307,23 +307,35 @@ public class Menu
 					index = in.nextInt();
 					System.out.println("Digite o login do usuario vai comentar as publicacao: ");
 					user2 = stringScan.nextLine();
-					if( mapUsuarios.get(user2) != null)
+					if( mapUsuarios.get(user2).getSeguidos().contains(user1)) 
 					{
-						mensagem = user2 + " ";
-						System.out.println("Digite seu comentario: ");
-						mensagem += stringScan.nextLine();
-						mensagem += userList.getHourNow();
-						mapMensagens.get(user1).addComentario(mensagem,index);
+						
+
+							if( mapUsuarios.get(user2) != null)
+							{
+								mensagem = user2 + " ";
+								System.out.println("Digite seu comentario: ");
+								mensagem += stringScan.nextLine();
+								mensagem += userList.getHourNow();
+								mapMensagens.get(user1).addComentario(mensagem,index);
+							}
+							else
+							{
+								System.out.println("Nao existem usuarios com esse login\n");
+							}
 					}
 					else
 					{
-						System.out.println("Nao existem usuarios com esse login\n");
+						System.out.println("Voce nao esta seguindo essa pessoa para fazer comentarios\n");
 					}
+					
 				}
 				else
 				{
 					System.out.println("Nao existem usuarios com esse login\n");
 				}
+				
+				
 				break;
 			case 3:
 				System.out.println("Digite o login da pessoa que deseja ver as mensagens: ");
